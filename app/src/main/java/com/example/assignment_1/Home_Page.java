@@ -14,16 +14,13 @@ import java.util.ArrayList;
 public class Home_Page extends AppCompatActivity {
 
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        searchViewAction();
+  //      searchViewAction();
         optionRecycler();
+        dealListRecycler();
 
     }
 
@@ -42,7 +39,21 @@ public class Home_Page extends AppCompatActivity {
         rc_option.setAdapter(new OptionAdapter(optionItems));
     }
 
+    private void dealListRecycler(){
 
+        RecyclerView rc = findViewById(R.id.recycler_list);
+        rc.setLayoutManager(new LinearLayoutManager(this));
+
+        ArrayList<Deal_List> deal_lists = new ArrayList<>();
+        deal_lists.add(new Deal_List("Deal 1", "Category 1", R.drawable.greatwall));
+        deal_lists.add(new Deal_List("Deal 2", "Category 2", R.drawable.yarlungtsangpo));
+        deal_lists.add(new Deal_List("Deal 3", "Category 3", R.drawable.mounteverest));
+        deal_lists.add(new Deal_List("Deal 4", "Category 4", R.drawable.harbin));
+
+        rc.setAdapter(new Deal_List_Adapter(deal_lists));
+    }
+
+/*
     private void searchViewAction(){
 
         SearchView searchView = findViewById(R.id.searchView);
@@ -76,5 +87,5 @@ public class Home_Page extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
 }
