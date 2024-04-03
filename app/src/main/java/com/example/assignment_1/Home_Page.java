@@ -1,13 +1,18 @@
 package com.example.assignment_1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 
@@ -18,9 +23,10 @@ public class Home_Page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-  //      searchViewAction();
+  //     searchViewAction();
         optionRecycler();
         dealListRecycler();
+        bottomNavigation();
 
     }
 
@@ -88,4 +94,27 @@ public class Home_Page extends AppCompatActivity {
         });
 
     }*/
+
+    private void bottomNavigation(){
+
+        NavigationBarView nav = findViewById(R.id.bottom_navigation);
+        NavigationBarView.OnItemSelectedListener listener = new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId() == R.id.item_1){
+
+                    return true;
+                }
+
+                else if (item.getItemId() == R.id.item_2){
+
+                    return true;
+                }
+
+                else
+                    return false;
+            }};
+        nav.setOnItemSelectedListener(listener);
+    }
+
 }
