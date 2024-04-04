@@ -74,13 +74,18 @@
         android:id="@+id/recycler_serivce"/>
 
     <Button
-        style="@style/Widget.Material3.Button.ElevatedButton"
-        android:id="@+id/deal_detail_button"
         android:layout_marginTop="20dp"
+        android:layout_height="70dp"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Elevated button" />
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        app:icon="@drawable/button_arrow"
+        android:text = "Book Now"
+        android:id = "@+id/btn_deal_detail"
+        app:iconGravity="textEnd"
+        android:textSize="20dp"
+        app:iconSize="50dp" />
+
 
 
 </LinearLayout>

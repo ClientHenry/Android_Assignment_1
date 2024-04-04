@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Login_Page">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Back"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please, Log in."
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:textSize="30dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="User Name"
+        android:layout_gravity="center"
+        app:startIconDrawable="@drawable/txt_manage"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:hint="Password"
+        app:startIconDrawable="@drawable/txt_key"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_gravity="center"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        app:icon="@drawable/button_arrow"
+        app:iconGravity="textEnd"
+        android:textSize="20dp"
+        app:iconSize="50dp"
+        android:text="Login in" />
+
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="-------------------------    Or    -------------------------"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:textSize="20dp" />
+
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_gravity="center"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        app:icon="@drawable/button_arrow"
+        app:iconGravity="textEnd"
+        android:textSize="20dp"
+        app:iconSize="50dp"
+        android:text="Sign Up" />
+
+
+
+</LinearLayout>
