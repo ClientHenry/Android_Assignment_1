@@ -41,4 +41,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     // add a photo view library
     implementation("com.github.bumptech.glide:glide:4.12.0")
+    // add Dao library
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+
+
 }

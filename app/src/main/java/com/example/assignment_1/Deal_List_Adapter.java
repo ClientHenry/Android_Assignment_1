@@ -16,6 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
+import java.util.Locale;
 
 
 public class Deal_List_Adapter extends RecyclerView.Adapter{
@@ -44,6 +45,11 @@ public class Deal_List_Adapter extends RecyclerView.Adapter{
         Deal_List_ViewHolder viewHolder = (Deal_List_ViewHolder) holder;
         viewHolder.deal_name.setText(x.get(position).getName());
         viewHolder.deal_category.setText(x.get(position).getCategory());
+        viewHolder.deal_star.setText(String.format(Locale.getDefault(), "%.1f", x.get(position).getStar()));
+
+        viewHolder.deal_date.setText(x.get(position).getDate());
+        viewHolder.deal_price.setText(String.format(Locale.getDefault(), "%.0f", x.get(position).getPrice()));;
+        viewHolder.deal_discount.setText(String.format(Locale.getDefault(), "%.1f", x.get(position).getDiscount()));
 
         // modification of the image using the Glide library
         RequestOptions requestOptions = new RequestOptions();
@@ -61,11 +67,21 @@ public class Deal_List_Adapter extends RecyclerView.Adapter{
         public TextView deal_name;
         public TextView deal_category;
         public ImageView deal_image;
+        public TextView deal_star;
+        public TextView deal_date;
+        public TextView deal_price;
+        public TextView deal_discount;
+
+
         public Deal_List_ViewHolder(@NonNull View itemView) {
             super(itemView);
-            deal_name = itemView.findViewById(R.id.textView_deal_name);
-            deal_category = itemView.findViewById(R.id.textView_deal_category);
-            deal_image = itemView.findViewById(R.id.imageView);
+            deal_name = itemView.findViewById(R.id.deal_txt_deal_name);
+            deal_category = itemView.findViewById(R.id.deal_txt_deal_category);
+            deal_star = itemView.findViewById(R.id.deal_txt_deal_grade);
+            deal_date = itemView.findViewById(R.id.deal_txt_deal_date);
+            deal_price = itemView.findViewById(R.id.deal_txt_deal_price);
+            deal_discount = itemView.findViewById(R.id.deal_txt_deal_discount);
+            deal_image = itemView.findViewById(R.id.deal_imageView);
         }
     }
 }

@@ -52,10 +52,11 @@ public class Home_Page extends AppCompatActivity {
         rc.setLayoutManager(new LinearLayoutManager(this));
 
         ArrayList<Deal_List> deal_lists = new ArrayList<>();
-        deal_lists.add(new Deal_List("Deal 1", "Category 1", R.drawable.greatwall));
-        deal_lists.add(new Deal_List("Deal 2", "Category 2", R.drawable.yarlungtsangpo));
-        deal_lists.add(new Deal_List("Deal 3", "Category 3", R.drawable.mounteverest));
-        deal_lists.add(new Deal_List("Deal 4", "Category 4", R.drawable.harbin));
+        deal_lists.add(new Deal_List("Deal 1", "Category 1", R.drawable.greatwall, 4.5, "2021-10-01", 1000, 0.5));
+        deal_lists.add(new Deal_List("Deal 2", "Category 2", R.drawable.harbin, 4.0, "2021-10-02", 2000, 0.3));
+        deal_lists.add(new Deal_List("Deal 3", "Category 3", R.drawable.mounteverest, 3.5, "2021-10-03", 3000, 0.2));
+        deal_lists.add(new Deal_List("Deal 4", "Category 4", R.drawable.yarlungtsangpo, 3.0, "2021-10-04", 4000, 0.1));
+        deal_lists.add(new Deal_List("Deal 5", "Category 5", R.drawable.greatwall, 2.5, "2021-10-05", 5000, 0.0));
 
         rc.setAdapter(new Deal_List_Adapter(deal_lists));
     }
@@ -104,7 +105,7 @@ public class Home_Page extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.item_1){
 
-                    Intent intent = new Intent(Home_Page.this, Deal_Detail_Page.class);
+                    Intent intent                                                                                                                                                                                                                                                                                                                                                                                                                                                  = new Intent(Home_Page.this, Customer_Page.class);
                     startActivity(intent);
 
 
