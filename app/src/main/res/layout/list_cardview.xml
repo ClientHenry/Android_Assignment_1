@@ -53,44 +53,6 @@
             android:layout_marginTop="15dp">
 
             <TextView
-                android:id="@+id/deal_txt_deal_date"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_weight="1"
-                android:text="Deal Date" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginLeft="50dp"
-                    android:src="@drawable/star" />
-
-                <TextView
-                    android:id="@+id/deal_txt_deal_grade"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:text="Deal Grade" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp">
-
-            <TextView
                 android:id="@+id/deal_txt_deal_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -111,7 +73,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/elevatedButton"
+            android:id="@+id/deal_txt_button"
             style="@style/Widget.Material3.Button.ElevatedButton"
             android:layout_width="300dp"
             android:layout_height="wrap_content"

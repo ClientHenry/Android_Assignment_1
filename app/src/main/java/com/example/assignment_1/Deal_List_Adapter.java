@@ -1,12 +1,15 @@
 package com.example.assignment_1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,11 +24,11 @@ import java.util.Locale;
 
 public class Deal_List_Adapter extends RecyclerView.Adapter{
 
-    private List<Deal_List> x;
+    private List<Product> x;
     // usage of the Glide library
     private Context mContext;
 
-    public Deal_List_Adapter(List<Deal_List> x) {
+    public Deal_List_Adapter(List<Product> x) {
         this.x = x;
     }
 
@@ -45,16 +48,22 @@ public class Deal_List_Adapter extends RecyclerView.Adapter{
         Deal_List_ViewHolder viewHolder = (Deal_List_ViewHolder) holder;
         viewHolder.deal_name.setText(x.get(position).getName());
         viewHolder.deal_category.setText(x.get(position).getCategory());
-        viewHolder.deal_star.setText(String.format(Locale.getDefault(), "%.1f", x.get(position).getStar()));
-
-        viewHolder.deal_date.setText(x.get(position).getDate());
-        viewHolder.deal_price.setText(String.format(Locale.getDefault(), "%.0f", x.get(position).getPrice()));;
-        viewHolder.deal_discount.setText(String.format(Locale.getDefault(), "%.1f", x.get(position).getDiscount()));
+        viewHolder.deal_price.setText(Integer.toString(x.get(position).getPrice()));;
+        viewHolder.deal_discount.setText(Integer.toString(x.get(position).getDiscount()));
 
         // modification of the image using the Glide library
         RequestOptions requestOptions = new RequestOptions();
         requestOptions = requestOptions.transform(new RoundedCorners(30));
-        Glide.with(mContext).load(x.get(position).getImage_src()).apply(requestOptions).into(viewHolder.deal_image);
+        Glide.with(mContext).load(x.get(position).getImage_1()).apply(requestOptions).into(viewHolder.deal_image);
+
+        viewHolder.deal_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, Deal_Detail_Page.class);
+                intent.putExtra("product_id", x.get(viewHolder.getAdapterPosition()).getId());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -67,21 +76,20 @@ public class Deal_List_Adapter extends RecyclerView.Adapter{
         public TextView deal_name;
         public TextView deal_category;
         public ImageView deal_image;
-        public TextView deal_star;
-        public TextView deal_date;
         public TextView deal_price;
         public TextView deal_discount;
+
+        public Button deal_button;
 
 
         public Deal_List_ViewHolder(@NonNull View itemView) {
             super(itemView);
             deal_name = itemView.findViewById(R.id.deal_txt_deal_name);
             deal_category = itemView.findViewById(R.id.deal_txt_deal_category);
-            deal_star = itemView.findViewById(R.id.deal_txt_deal_grade);
-            deal_date = itemView.findViewById(R.id.deal_txt_deal_date);
             deal_price = itemView.findViewById(R.id.deal_txt_deal_price);
             deal_discount = itemView.findViewById(R.id.deal_txt_deal_discount);
             deal_image = itemView.findViewById(R.id.deal_imageView);
+            deal_button = itemView.findViewById(R.id.deal_txt_button);
         }
     }
 }

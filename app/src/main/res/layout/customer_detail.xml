@@ -50,7 +50,7 @@
             android:layout_width="300dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:src="@drawable/harbin"
+            android:src="@drawable/harbin_1"
             android:scaleType="centerCrop"/>
 
     </LinearLayout>
