@@ -1,14 +1,20 @@
 package com.example.assignment_1;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 
-@Entity(tableName = "product_table")
+@Entity(tableName = "product_table",
+        foreignKeys = @ForeignKey(entity = Supplier.class,
+                parentColumns = "sid", childColumns = "supplier_id",
+                onDelete = ForeignKey.NO_ACTION),
+                indices = {@Index("supplier_id")})
 public class Product {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int pid;
     private String name;
     private String category;
     private int price;
@@ -19,8 +25,12 @@ public class Product {
     private int image_3;
     private int image_4;
 
+    private int supplier_id;
 
-    public Product(String name, String category, int price, int discount, String description, int image_1, int image_2, int image_3, int image_4) {
+
+    public Product(String name, String category, int price, int discount,
+                   String description, int image_1, int image_2,
+                   int image_3, int image_4, int supplier_id) {
         this.name = name;
         this.category = category;
         this.price = price;
@@ -30,16 +40,11 @@ public class Product {
         this.image_2 = image_2;
         this.image_3 = image_3;
         this.image_4 = image_4;
+        this.supplier_id = supplier_id;
     }
 
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -111,5 +116,21 @@ public class Product {
 
     public void setImage_4(int image_4) {
         this.image_4 = image_4;
+    }
+
+    public int getSupplier_id() {
+        return supplier_id;
+    }
+
+    public void setSupplier_id(int supplier_id) {
+        this.supplier_id = supplier_id;
+    }
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
     }
 }

@@ -6,10 +6,14 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Product.class}, version = 1, exportSchema = false)
+@Database(entities = {Product.class, Supplier.class, Customer.class, Deal.class}, version = 1, exportSchema = false)
 public abstract class MyDataBase extends RoomDatabase {
 
     public abstract ProductDao productDao();
+    public abstract SupplierDao supplierDao();
+    public abstract CustomerDao customerDao();
+
+    public abstract DealDao dealDao();
 
     private static volatile MyDataBase INSTANCE;
 
@@ -27,6 +31,4 @@ public abstract class MyDataBase extends RoomDatabase {
     private static MyDataBase buildDatabase(Context context){
         return Room.databaseBuilder(context, MyDataBase.class, "MyDataBase").allowMainThreadQueries().build();
     }
-
-
 }

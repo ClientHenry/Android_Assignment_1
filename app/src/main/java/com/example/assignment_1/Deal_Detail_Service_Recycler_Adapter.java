@@ -22,6 +22,8 @@ public class Deal_Detail_Service_Recycler_Adapter extends RecyclerView.Adapter{
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
+
+
     }
 
     @Override

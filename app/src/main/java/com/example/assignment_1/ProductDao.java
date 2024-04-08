@@ -23,11 +23,14 @@ public interface ProductDao {
     @Query("SELECT * FROM product_table")
     List<Product> getAllProducts();
 
-    @Query("SELECT * FROM product_table WHERE id = :id")
+    @Query("SELECT * FROM product_table WHERE pid = :id")
     Product getProduct(int id);
 
     @Query("Select * FROM product_table WHERE category = :category")
     List<Product> getProductsByCategory(String category);
+
+    @Query("Select * FROM product_table WHERE supplier_id = :supplier_id")
+    List<Product> getProductsBySupplier(int supplier_id);
 
 
 

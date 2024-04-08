@@ -60,7 +60,7 @@ public class Deal_List_Adapter extends RecyclerView.Adapter{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, Deal_Detail_Page.class);
-                intent.putExtra("product_id", x.get(viewHolder.getAdapterPosition()).getId());
+                intent.putExtra("product_id", x.get(viewHolder.getAdapterPosition()).getPid());
                 mContext.startActivity(intent);
             }
         });

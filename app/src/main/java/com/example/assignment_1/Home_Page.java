@@ -26,6 +26,9 @@ public class Home_Page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+
+
         //     searchViewAction();
         optionRecycler();
         dealListRecycler();
@@ -40,6 +43,8 @@ public class Home_Page extends AppCompatActivity {
         rc_option.setLayoutManager(lm);
 
         ArrayList<Option_Item> optionItems = new ArrayList<>();
+
+        optionItems.add(new Option_Item("All", R.drawable.option_all));
         optionItems.add(new Option_Item("Nature", R.drawable.option_nature));
         optionItems.add(new Option_Item("Gourmet", R.drawable.option_gourmet));
         optionItems.add(new Option_Item("Wonder", R.drawable.option_wonder));
