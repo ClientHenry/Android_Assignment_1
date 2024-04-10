@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up Option"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:textSize="30dp" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_marginTop="40dp"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+       android:layout_gravity="center"
+        >
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical">
+
+          <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="150dp"
+              android:scaleType="centerCrop"
+              app:srcCompat="@drawable/customer" />
+
+
+          <com.google.android.material.button.MaterialButton
+              android:id="@+id/sign_up_option_btn_customer"
+              style="?attr/borderlessButtonStyle"
+              android:textSize="25dp"
+              android:layout_width="300dp"
+              android:layout_height="50dp"
+              android:text="C U S T O M E R" />
+
+       </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/supplier" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sign_up_option_btn_supplier"
+                style="?attr/borderlessButtonStyle"
+                android:textSize="25dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="S U P P L I E R" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

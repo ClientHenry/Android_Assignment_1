@@ -54,8 +54,6 @@ public class Sign_Up_Page extends AppCompatActivity {
         regPassword.setError(null);
         return true;
     }
-
-
     }
 
 

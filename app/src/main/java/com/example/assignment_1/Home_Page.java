@@ -109,7 +109,7 @@ public class Home_Page extends AppCompatActivity {
                     Intent intent;
                     Customer customer = MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin();
                     if (customer == null) {
-                        intent = new Intent(Home_Page.this, Login_Page.class);
+                        intent = new Intent(Home_Page.this, Admin_Page.class);
                     } else {
                         intent = new Intent(Home_Page.this, Customer.class);
                     }
