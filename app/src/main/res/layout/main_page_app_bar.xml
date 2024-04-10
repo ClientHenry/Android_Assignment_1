@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Category"
-        android:textSize="20sp"
+        style="@style/TextAppearance.AppCompat.Title"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"/>
 
@@ -32,7 +32,6 @@
         android:id="@+id/recycler_option"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp" />
 

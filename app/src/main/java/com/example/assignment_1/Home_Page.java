@@ -27,8 +27,6 @@ public class Home_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-
-
         //     searchViewAction();
         optionRecycler();
         dealListRecycler();
@@ -104,20 +102,26 @@ public class Home_Page extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.item_1) {
 
-                    Intent intent = new Intent(Home_Page.this, Customer_Page.class);
+                    Intent intent = new Intent(Home_Page.this, Sign_Up_Page.class);
                     startActivity(intent);
-
-
                     return true;
                 } else if (item.getItemId() == R.id.item_2) {
+                    Intent intent;
+                    Customer customer = MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin();
+                    if (customer == null) {
+                        intent = new Intent(Home_Page.this, Login_Page.class);
+                    } else {
+                        intent = new Intent(Home_Page.this, Customer.class);
+                    }
+                   startActivity(intent);
 
-                    return true;
+                   return true;
+
                 } else
                     return false;
             }
         };
         nav.setOnItemSelectedListener(listener);
     }
-
 
 }

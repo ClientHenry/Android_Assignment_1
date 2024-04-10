@@ -20,6 +20,8 @@ public class Product {
     private int price;
     private int discount;
     private String description;
+    private String Date;
+    private String mark;
     private int image_1;
     private int image_2;
     private int image_3;
@@ -30,7 +32,7 @@ public class Product {
 
     public Product(String name, String category, int price, int discount,
                    String description, int image_1, int image_2,
-                   int image_3, int image_4, int supplier_id) {
+                   int image_3, int image_4, int supplier_id, String Date, String mark) {
         this.name = name;
         this.category = category;
         this.price = price;
@@ -41,6 +43,8 @@ public class Product {
         this.image_3 = image_3;
         this.image_4 = image_4;
         this.supplier_id = supplier_id;
+        this.Date = Date;
+        this.mark = mark;
     }
 
 
@@ -132,5 +136,21 @@ public class Product {
 
     public void setPid(int pid) {
         this.pid = pid;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
     }
 }

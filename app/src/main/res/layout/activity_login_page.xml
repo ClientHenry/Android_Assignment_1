@@ -24,6 +24,7 @@
         android:textSize="30dp" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_txt_username"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -42,6 +43,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_txt_password"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -59,6 +61,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/login_btn_login"
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_width="350dp"
@@ -81,6 +84,7 @@
 
 
     <Button
+        android:id="@+id/login_btn_signup"
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_width="350dp"

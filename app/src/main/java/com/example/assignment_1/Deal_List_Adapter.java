@@ -50,6 +50,8 @@ public class Deal_List_Adapter extends RecyclerView.Adapter{
         viewHolder.deal_category.setText(x.get(position).getCategory());
         viewHolder.deal_price.setText(Integer.toString(x.get(position).getPrice()));;
         viewHolder.deal_discount.setText(Integer.toString(x.get(position).getDiscount()));
+        viewHolder.deal_date.setText(x.get(position).getDate());
+        viewHolder.deal_mark.setText(x.get(position).getMark());
 
         // modification of the image using the Glide library
         RequestOptions requestOptions = new RequestOptions();
@@ -80,6 +82,8 @@ public class Deal_List_Adapter extends RecyclerView.Adapter{
         public TextView deal_discount;
 
         public Button deal_button;
+        public TextView deal_date;
+        public TextView deal_mark;
 
 
         public Deal_List_ViewHolder(@NonNull View itemView) {
@@ -89,6 +93,8 @@ public class Deal_List_Adapter extends RecyclerView.Adapter{
             deal_price = itemView.findViewById(R.id.deal_txt_deal_price);
             deal_discount = itemView.findViewById(R.id.deal_txt_deal_discount);
             deal_image = itemView.findViewById(R.id.deal_imageView);
+            deal_date = itemView.findViewById(R.id.deal_txt_deal_date);
+            deal_mark = itemView.findViewById(R.id.deal_txt_deal_mark);
             deal_button = itemView.findViewById(R.id.deal_txt_button);
         }
     }

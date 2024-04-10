@@ -1,89 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".Deal_Detail_Page">
 
-    <androidx.viewpager.widget.ViewPager
-        android:layout_width="350dp"
-        android:layout_height="230dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:id="@+id/deal_detail_view_pager"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="350dp"
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/deal_detail_view_pager"
+                android:layout_width="350dp"
+                android:layout_height="230dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp" />
+
+            <TextView
+                android:id="@+id/deal_detail_lbl_category"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="100dp"
+                android:text="More from Nature >>" />
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/deal_detail_lbl_price"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="$ 900" />
+
+                <TextView
+                    android:id="@+id/deal_detail_lbl_discount"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="15% Off" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:gravity="end|center_vertical">
+
+                <TextView
+                    android:id="@+id/deal_detail_lbl_date"
+                    style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Deal Date" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end|center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/star" />
+
+                    <TextView
+                        android:id="@+id/deal_detail_lbl_mark"
+                        style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="4.7" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/deal_detail_lbl_Name"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Mount Everest" />
+
+
+            <TextView
+                android:id="@+id/deal_detail_lbl_description"
+                style="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="This majestic mountain attracts climbers and adventurers globally, offering breathtaking views, challenging ascents" />
+
+            <Button
+                android:id="@+id/deal_detail_btn"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="350dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Book Now"
+                android:textSize="20dp"
+                app:icon="@drawable/button_arrow"
+                app:iconGravity="textEnd"
+                app:iconSize="50dp"
+                android:layout_marginBottom="100dp"
+                />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:id="@+id/deal_detail_lbl_category"
-        android:text="More from Nature >>"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="$ 900"
-            android:id="@+id/deal_detail_lbl_price"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/deal_detail_lbl_discount"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="10"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.50" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/deal_detail_lbl_Name"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Mount Everest"/>
+        android:layout_gravity="bottom"
+        app:menu="@menu/navigation_bar" />
 
 
-    <TextView
-        android:id="@+id/deal_detail_lbl_description"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="This majestic mountain attracts climbers and adventurers globally, offering breathtaking views, challenging ascents"/>
-
-
-    <Button
-        android:layout_marginTop="20dp"
-        android:layout_height="70dp"
-        android:layout_width="350dp"
-        android:layout_gravity="center"
-        style="@style/Widget.Material3.Button.ElevatedButton"
-        app:icon="@drawable/button_arrow"
-        android:text = "Book Now"
-        android:id = "@+id/deal_detail_btn"
-        app:iconGravity="textEnd"
-        android:textSize="20dp"
-        app:iconSize="50dp" />
-
-
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

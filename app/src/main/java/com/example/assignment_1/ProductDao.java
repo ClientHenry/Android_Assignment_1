@@ -32,6 +32,4 @@ public interface ProductDao {
     @Query("Select * FROM product_table WHERE supplier_id = :supplier_id")
     List<Product> getProductsBySupplier(int supplier_id);
 
-
-
 }

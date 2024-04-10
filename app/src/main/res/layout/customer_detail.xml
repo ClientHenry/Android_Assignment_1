@@ -19,6 +19,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/customer_lbl_deal_number"
                 android:text="Order Number: 183764" />
 
             <Button
@@ -40,6 +41,7 @@
 
 
         <TextView
+            android:id="@+id/customer_lbl_deal_name"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -47,6 +49,7 @@
 
 
         <ImageView
+            android:id="@+id/customer_img_deal_image"
             android:layout_width="300dp"
             android:layout_height="200dp"
             android:layout_gravity="center"

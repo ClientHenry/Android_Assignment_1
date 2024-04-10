@@ -26,5 +26,13 @@ public interface CustomerDao {
     @Query("SELECT * FROM tbl_customer")
     List<Customer> getAll();
 
+    @Query("SELECT * FROM tbl_customer WHERE status = 1")
+    Customer getLogin();
+
+    @Query("SELECT * FROM tbl_customer WHERE name = :name AND password = :password")
+    Customer getCustomerByNameAndPassword(String name, String password);
+
+    @Query("SELECT * FROM tbl_customer WHERE name = :name")
+    Customer getCustomerByName(String name);
 
 }

@@ -13,11 +13,14 @@ public class Customer {
     public String address;
     public String phoneNum;
 
+    public int  status;
+
     public Customer(String name, String password, String address, String phoneNum) {
         this.name = name;
         this.password = password;
         this.address = address;
         this.phoneNum = phoneNum;
+        this.status = 0;
     }
 
 
@@ -59,5 +62,14 @@ public class Customer {
 
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
+    }
+
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

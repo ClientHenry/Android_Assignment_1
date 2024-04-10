@@ -52,4 +52,12 @@ public class Deal {
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
+
+    public int getDid() {
+        return did;
+    }
+
+    public void setDid(int did) {
+        this.did = did;
+    }
 }

@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="40dp"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    android:background="@android:color/transparent"
+    android:layout_marginBottom="40dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,6 +15,7 @@
         android:orientation="vertical">
 
         <ImageView
+            android:layout_marginTop="25dp"
             android:id="@+id/deal_imageView"
             android:layout_width="300dp"
             android:layout_height="200dp"
@@ -28,22 +31,55 @@
 
             <TextView
                 android:id="@+id/deal_txt_deal_name"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Deal Name"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:text="Deal Name" />
 
             <TextView
                 android:id="@+id/deal_txt_deal_category"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="Deal Category"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:text="Deal Category" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/deal_txt_deal_date"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Deal Name" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end|center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star" />
+                <TextView
+                    android:id="@+id/deal_txt_deal_mark"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.7"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -54,22 +90,21 @@
 
             <TextView
                 android:id="@+id/deal_txt_deal_price"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="$ 900"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                />
 
             <TextView
                 android:id="@+id/deal_txt_deal_discount"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="15% Off"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:text="15% Off" />
         </LinearLayout>
 
         <Button
@@ -80,7 +115,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:text="View Details"/>
+            android:text="View Details" />
 
     </LinearLayout>
 
