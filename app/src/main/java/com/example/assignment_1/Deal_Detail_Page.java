@@ -28,7 +28,7 @@ public class Deal_Detail_Page extends AppCompatActivity {
         Product product = MyDataBase.getInstance(getApplicationContext()).productDao().getProduct(id);
 
         TextView deal_name = findViewById(R.id.deal_detail_lbl_Name);
-        TextView deal_category = findViewById(R.id.deal_detail_lbl_category);
+      //  TextView deal_category = findViewById(R.id.deal_detail_lbl_category);
         TextView deal_price = findViewById(R.id.deal_detail_lbl_price);
         TextView deal_discount = findViewById(R.id.deal_detail_lbl_discount);
         TextView deal_description = findViewById(R.id.deal_detail_lbl_description);
@@ -36,7 +36,7 @@ public class Deal_Detail_Page extends AppCompatActivity {
         TextView deal_date = findViewById(R.id.deal_detail_lbl_date);
 
         deal_name.setText(product.getName());
-        deal_category.setText(product.getCategory());
+    //    deal_category.setText(product.getCategory());
         deal_price.setText(Integer.toString(product.getPrice()));
         deal_discount.setText(Integer.toString(product.getDiscount()));
         deal_description.setText(product.getDescription());

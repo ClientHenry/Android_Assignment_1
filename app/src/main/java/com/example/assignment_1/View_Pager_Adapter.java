@@ -26,16 +26,20 @@ public class View_Pager_Adapter extends FragmentPagerAdapter {
 
         if(position == 0){
             view_pager_fragment.setImage(x.getImage_1());
+            view_pager_fragment.setProgress_bar_alpha(1F, 0.5F, 0.5F, 0.5F);
 
         }
         else if(position == 1){
             view_pager_fragment.setImage(x.getImage_2());
+            view_pager_fragment.setProgress_bar_alpha(1F, 1F, 0.5F, 0.5F);
         }
         else if(position == 2){
             view_pager_fragment.setImage(x.getImage_3());
+            view_pager_fragment.setProgress_bar_alpha(1F, 1F, 1F, 0.5F);
         }
         else{
             view_pager_fragment.setImage(x.getImage_4());
+            view_pager_fragment.setProgress_bar_alpha(1F, 1F, 1F, 1F);
         }
 
         return view_pager_fragment;

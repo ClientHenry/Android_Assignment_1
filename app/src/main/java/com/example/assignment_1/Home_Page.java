@@ -102,7 +102,7 @@ public class Home_Page extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.item_1) {
 
-                    Intent intent = new Intent(Home_Page.this, Sign_Up_Page.class);
+                    Intent intent = new Intent(Home_Page.this, Login_Page.class);
                     startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.item_2) {
