@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:layout_width="match_parent"
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <ImageView
     android:id="@+id/deal_detail_image"
@@ -11,6 +11,7 @@
     android:src="@drawable/everest_1">
 
 </ImageView>
+
 
     <LinearLayout
         android:id="@+id/progress_container"

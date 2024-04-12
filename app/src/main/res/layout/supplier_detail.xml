@@ -24,7 +24,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/customer_lbl_deal_number"
+                    android:id="@+id/supplier_lbl_product_number"
                     style="@style/TextAppearance.Material3.BodyMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
                     android:text="Order Number: 183764" />
 
                 <TextView
-                    android:id="@+id/customer_lbl_deal_name"
+                    android:id="@+id/supplier_lbl_product_name"
                     style="@style/TextAppearance.Material3.BodyMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/customer_img_deal_image"
+            android:id="@+id/supplier_img_product"
             android:layout_width="300dp"
             android:layout_height="200dp"
             android:layout_gravity="center"

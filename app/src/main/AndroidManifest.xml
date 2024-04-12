@@ -22,6 +22,9 @@
             android:name=".Customer_Page"
             android:exported="false" />
         <activity
+            android:name=".Supplier_Page"
+            android:exported="false" />
+        <activity
             android:name=".Sign_Up_Page"
             android:exported="false" />
         <activity

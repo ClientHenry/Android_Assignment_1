@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/customer_background"
-    tools:context=".Customer_Page">
+    android:background="@drawable/supplier_background"
+    tools:context=".Supplier_Page">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -18,30 +18,32 @@
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/supplier_fab"
                     style="?attr/floatingActionButtonSmallStyle"
-                    android:id="@+id/customer_btn_return"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     app:srcCompat="@drawable/button_return" />
 
                 <TextView
-                    android:id="@+id/customer_lbl_title"
+                    android:id="@+id/supplier_lbl_title"
                     style="@style/TextAppearance.MaterialComponents.Headline4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Hi, Customer"
-                    android:textColor="#FFFFFF" />
+                    android:text="Hi, Supplier"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30dp" />
 
                 <Button
-                    android:id="@+id/customer_btn_sign_out"
+                    android:id="@+id/supplier_btn_sign_out"
                     style="@style/Widget.Material3.Button.ElevatedButton"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
@@ -61,21 +63,21 @@
                     android:layout_marginTop="15dp">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/customer_txt_id"
+                        android:id="@+id/supplier_txt_id"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:hint="Customer ID"
+                        android:hint="Supplier ID"
                         android:textColorHint="#FFFFFF"
                         app:boxBackgroundMode="none">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            style="@style/TextAppearance.Material3.BodyLarge"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:paddingTop="10dp"
-                            android:text="1Y3U5B7C" />
+                            android:text="1Y3U5B7C"
+                            style="@style/TextAppearance.Material3.BodyLarge" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +90,7 @@
                     android:layout_gravity="center">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/customer_txt_password"
+                        android:id="@+id/supplier_txt_password"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -97,17 +99,18 @@
                         app:boxBackgroundMode="none">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            style="@style/TextAppearance.Material3.BodyLarge"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:paddingTop="10dp"
-                            android:text="1Y3U5B7C" />
+                            android:text="1Y3U5B7C"
+                            style="@style/TextAppearance.Material3.BodyLarge" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+
                     <Button
-                        android:id="@+id/customer_btn_password"
+                        android:id="@+id/supplier_btn_password"
                         style="?attr/materialIconButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -123,12 +126,13 @@
                 </LinearLayout>
 
                 <LinearLayout
+
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/customer_txt_phone_number"
+                        android:id="@+id/supplier_txt_phone_number"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -137,17 +141,18 @@
                         app:boxBackgroundMode="none">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            style="@style/TextAppearance.Material3.BodyLarge"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:paddingTop="10dp"
-                            android:text="1Y3U5B7C" />
+                            android:text="1Y3U5B7C"
+                            style="@style/TextAppearance.Material3.BodyLarge" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+
                     <Button
-                        android:id="@+id/customer_btn_phone_number"
+                        android:id="@+id/supplier_btn_phone_number"
                         style="?attr/materialIconButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -168,7 +173,7 @@
                     android:layout_gravity="center">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/customer_txt_address"
+                        android:id="@+id/supplier_txt_address"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -177,17 +182,18 @@
                         app:boxBackgroundMode="none">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            style="@style/TextAppearance.Material3.BodyLarge"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:paddingTop="10dp"
-                            android:text="1Y3U5B7C" />
+                            android:text="1Y3U5B7C"
+                            style="@style/TextAppearance.Material3.BodyLarge" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+
                     <Button
-                        android:id="@+id/customer_btn_address"
+                        android:id="@+id/supplier_btn_address"
                         style="?attr/materialIconButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -202,18 +208,33 @@
                         app:iconTint="?attr/colorOnSurface" />
                 </LinearLayout>
 
-                <com.google.android.material.divider.MaterialDivider
+                <LinearLayout
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:dividerColor="#FFFFFF" />
+                    android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16dp"
+                    android:text="- - - - - - - - - - - - - Current Products - -  - - - - -"
+                    />
+                    <Button
+                        style="?attr/materialIconButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:iconTint="@color/md_theme_light_primary"
+                        app:icon="@drawable/button_add" />
+
+                </LinearLayout>
 
             </LinearLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/customer_recyclerView"
+        android:id="@+id/supplier_recyclerView"
         android:layout_width="350dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"

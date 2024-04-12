@@ -10,6 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.List;
 
 public class Customer_Adapter extends RecyclerView.Adapter{
@@ -26,6 +30,9 @@ public class Customer_Adapter extends RecyclerView.Adapter{
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if(mContext == null){
+            mContext = parent.getContext();
+        }
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.customer_detail, parent, false);
         return new Customer_Adapter.Customer_Detail_ViewHolder(view);
     }
@@ -37,9 +44,12 @@ public class Customer_Adapter extends RecyclerView.Adapter{
         Product product = MyDataBase.getInstance(mContext).productDao().getProduct(productID);
 
         Customer_Detail_ViewHolder viewHolder = (Customer_Detail_ViewHolder) holder;
-        viewHolder.dealName.setText(product.getName());
-        viewHolder.dealNum.setText(Integer.toString(x.get(position).getDid()));
-        viewHolder.dealImage.setImageResource(product.getImage_1());
+        viewHolder.dealName.setText("Deal Name: " + product.getName());
+        viewHolder.dealNum.setText("Order Number: " + product.getIdNumber());
+
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions = requestOptions.transform(new RoundedCorners(30));
+        Glide.with(mContext).load(product.getImage_1()).apply(requestOptions).into(viewHolder.dealImage);
 
     }
 

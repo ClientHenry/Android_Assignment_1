@@ -5,6 +5,9 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 @Entity(tableName = "tbl_deal",
         foreignKeys = {
                 @ForeignKey(entity = Product.class,
@@ -30,10 +33,13 @@ public class Deal {
     public int productId;
     public int customerId;
 
+    public String idNumber;
+
 
     public Deal(int productId, int customerId) {
         this.productId = productId;
         this.customerId = customerId;
+        this.idNumber = createID();
     }
 
 
@@ -59,5 +65,45 @@ public class Deal {
 
     public void setDid(int did) {
         this.did = did;
+    }
+
+    public String createID() {
+
+        Random random = new Random();
+
+        ArrayList<Character> alphabet = new ArrayList<>();
+        String id = "";
+
+        for(char ch = 'A'; ch <= 'Z'; ch++) {
+
+            alphabet.add(ch);
+        }
+
+        ArrayList <Integer> numbers = new ArrayList<>();
+        for(int i = 0; i < 10; i++) {
+
+            numbers.add(i);
+        }
+
+        for(int i = 1; i <=3; i++) {
+
+            int randomIndex = random.nextInt(26);
+            char randomCharacter = alphabet.get(randomIndex);
+            id += randomCharacter;
+
+            randomIndex = random.nextInt(10);
+            int randomNum = numbers.get(randomIndex);
+            id += randomNum;
+        }
+
+        return id;
+    }
+
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
     }
 }

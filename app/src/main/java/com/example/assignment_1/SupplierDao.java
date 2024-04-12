@@ -28,4 +28,10 @@ public interface SupplierDao {
 
     @Query("SELECT * FROM tbl_supplier WHERE name = :name AND password = :password")
     Supplier getSupplierByNameAndPassword(String name, String password);
+
+    @Query("SELECT * FROM tbl_supplier WHERE status = 1")
+    Supplier getLogin();
+
+    @Query("SELECT * FROM tbl_supplier WHERE name = :name")
+    Supplier getSupplierByName(String name);
 }

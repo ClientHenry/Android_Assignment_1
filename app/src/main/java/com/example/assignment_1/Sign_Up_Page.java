@@ -1,11 +1,16 @@
 package com.example.assignment_1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class Sign_Up_Page extends AppCompatActivity {
@@ -27,12 +32,19 @@ public class Sign_Up_Page extends AppCompatActivity {
         regConfirmedPassword = findViewById(R.id.sigh_up_customer_txt_confirm_password);
         regBtn = (Button)findViewById(R.id.sigh_up_customer_btn_create_account);
         regToLoginBtn = (Button) findViewById(R.id.sigh_up_customer_btn_login);
+        FloatingActionButton btn_return = findViewById(R.id.sigh_up_customer_btn_return);
+
+        btn_return.setOnClickListener(v -> {
+           finish();
+        });
 
         regBtn.setOnClickListener(v -> {
            if(validateName()&&validatePassword()){
                Toast.makeText(getApplicationContext(), regName.getEditText().getText().toString().trim(), Toast.LENGTH_SHORT).show();
            }
         });
+
+        bottomNavigation();
 
     }
 
@@ -76,5 +88,41 @@ public class Sign_Up_Page extends AppCompatActivity {
             return true;
         }
 
+    }
+
+    private void bottomNavigation() {
+
+        NavigationBarView nav = findViewById(R.id.bottom_navigation);
+        NavigationBarView.OnItemSelectedListener listener = new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.item_1) {
+
+                    Intent intent = new Intent(Sign_Up_Page.this, Home_Page.class);
+                    startActivity(intent);
+                    return true;
+                } else if (item.getItemId() == R.id.item_2) {
+                    Intent intent;
+                    Customer customer = MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin();
+                    Supplier supplier = MyDataBase.getInstance(getApplicationContext()).supplierDao().getLogin();
+                    Admin admin = MyDataBase.getInstance(getApplicationContext()).adminDao().getLogin();
+                    if (customer != null) {
+                        intent = new Intent(Sign_Up_Page.this, Customer_Page.class);
+                        intent.putExtra("customer", customer.getName());
+                    } else if (supplier != null) {
+                        intent = new Intent(Sign_Up_Page.this, Supplier_Page.class);
+                        intent.putExtra("supplier", supplier.getName());
+                    } else if (admin != null) {
+                        intent = new Intent(Sign_Up_Page.this, Admin_Page.class);
+                    } else {
+                        intent = new Intent(Sign_Up_Page.this, Login_Page.class);
+                    }
+                    startActivity(intent);
+                    return true;
+                } else
+                    return false;
+            }
+        };
+        nav.setOnItemSelectedListener(listener);
     }
 }

@@ -5,6 +5,9 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 
 @Entity(tableName = "product_table",
         foreignKeys = @ForeignKey(entity = Supplier.class,
@@ -29,6 +32,18 @@ public class Product {
 
     private int supplier_id;
 
+    private String idNumber;
+
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
+
+
+
 
     public Product(String name, String category, int price, int discount,
                    String description, int image_1, int image_2,
@@ -45,6 +60,7 @@ public class Product {
         this.supplier_id = supplier_id;
         this.Date = Date;
         this.mark = mark;
+        this.idNumber = createID();
     }
 
 
@@ -152,5 +168,37 @@ public class Product {
 
     public void setMark(String mark) {
         this.mark = mark;
+    }
+
+    public String createID() {
+
+        Random random = new Random();
+
+        ArrayList<Character> alphabet = new ArrayList<>();
+        String id = "";
+
+        for(char ch = 'A'; ch <= 'Z'; ch++) {
+
+            alphabet.add(ch);
+        }
+
+        ArrayList <Integer> numbers = new ArrayList<>();
+        for(int i = 0; i < 10; i++) {
+
+            numbers.add(i);
+        }
+
+        for(int i = 1; i <=3; i++) {
+
+            int randomIndex = random.nextInt(26);
+            char randomCharacter = alphabet.get(randomIndex);
+            id += randomCharacter;
+
+            randomIndex = random.nextInt(10);
+            int randomNum = numbers.get(randomIndex);
+            id += randomNum;
+        }
+
+        return id;
     }
 }

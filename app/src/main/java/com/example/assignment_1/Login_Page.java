@@ -1,12 +1,16 @@
 package com.example.assignment_1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class Login_Page extends AppCompatActivity {
@@ -21,6 +25,7 @@ public class Login_Page extends AppCompatActivity {
         EditText txtPassword = txtLayoutPassword.getEditText();
         Button btnLogin = (Button) findViewById(R.id.login_btn_login);
         Button btnSignUp = (Button) findViewById(R.id.login_btn_signup);
+        FloatingActionButton btnReturn = findViewById(R.id.login_btn_return);
 
         btnLogin.setOnClickListener(v -> {
             String userName = txtUserName.getText().toString();
@@ -28,6 +33,7 @@ public class Login_Page extends AppCompatActivity {
 
             Customer customer = MyDataBase.getInstance(getApplicationContext()).customerDao().getCustomerByNameAndPassword(userName, password);
             Supplier supplier = MyDataBase.getInstance(getApplicationContext()).supplierDao().getSupplierByNameAndPassword(userName, password);
+            Admin admin = MyDataBase.getInstance(getApplicationContext()).adminDao().getAdminByUsernameAndPassword(userName, password);
             Intent intent;
 
             if (customer != null) {
@@ -35,23 +41,64 @@ public class Login_Page extends AppCompatActivity {
                 intent.putExtra("customer", customer.getName());
                 startActivity(intent);
 
-            } else if (supplier != null){
-                intent = new Intent(Login_Page.this, Supplier.class);
+            } else if (supplier != null) {
+                intent = new Intent(Login_Page.this, Supplier_Page.class);
+                intent.putExtra("supplier", supplier.getName());
                 startActivity(intent);
-            }else{
+            } else if (admin != null) {
+                intent = new Intent(Login_Page.this, Admin_Page.class);
+                startActivity(intent);
+            } else {
                 txtLayoutUserName.setError("Invalid Username or Password");
                 txtLayoutPassword.setError("Invalid Username or Password");
             }
         });
 
+        btnReturn.setOnClickListener(v -> {
+            finish();
+        });
 
+        bottomNavigation();
+    }
 
+    private void bottomNavigation() {
 
+        NavigationBarView nav = findViewById(R.id.bottom_navigation);
+        NavigationBarView.OnItemSelectedListener listener = new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.item_1) {
 
+                    Intent intent = new Intent(Login_Page.this, Home_Page.class);
+                    startActivity(intent);
+                    return true;
+                } else if (item.getItemId() == R.id.item_2) {
+                    Intent intent;
+                    Customer customer = MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin();
+                    Supplier supplier = MyDataBase.getInstance(getApplicationContext()).supplierDao().getLogin();
+                    Admin admin = MyDataBase.getInstance(getApplicationContext()).adminDao().getLogin();
+                    if (customer != null) {
+                        intent = new Intent(Login_Page.this, Customer_Page.class);
+                        intent.putExtra("customer", customer.getName());
+                        startActivity(intent);
+                        return true;
+                    } else if (supplier != null) {
+                        intent = new Intent(Login_Page.this, Supplier_Page.class);
+                        intent.putExtra("supplier", supplier.getName());
+                        startActivity(intent);
+                        return true;
+                    } else if (admin != null) {
+                        intent = new Intent(Login_Page.this, Admin_Page.class);
+                        startActivity(intent);
+                        return true;
 
-
-
-
-
+                    } else {
+                        return false;
+                    }
+                } else
+                    return false;
+            }
+        };
+        nav.setOnItemSelectedListener(listener);
     }
 }

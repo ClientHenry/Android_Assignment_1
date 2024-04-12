@@ -3,36 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent">
-    <!--
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp">-->
 
-
-    <!--
-                <com.google.android.material.appbar.CollapsingToolbarLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed">-->
-
-
-    <!--      <include layout="@layout/main_page_app_bar"/>-->
-
-    <!--     </com.google.android.material.appbar.CollapsingToolbarLayout>-->
-    <!--       </com.google.android.material.appbar.AppBarLayout>-->
-
-    <!--
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/searchbar_scrolling_view_behavior">-->
-    <!-- Screen content goes here. -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
         android:orientation="vertical">
 
         <com.google.android.material.search.SearchBar
@@ -51,7 +27,6 @@
             android:layout_marginTop="15dp"
             android:text="Category" />
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_option"
             android:layout_width="wrap_content"
@@ -66,9 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp" />
-        <!--        app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-
-        <!--  </androidx.core.widget.NestedScrollView>-->
 
     </LinearLayout>
 

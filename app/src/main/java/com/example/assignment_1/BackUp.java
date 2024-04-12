@@ -37,7 +37,7 @@ public class BackUp {
     ArrayList<Supplier> supplier_lists = new ArrayList<>();
     Supplier supplier1 = new Supplier("Henry", "3Ym7Kq4", "Bei Jing", "725-164-3908");
     Supplier supplier2 = new Supplier("Darren", "5Wf2nP6", "Shang Hai", "294-856-1307");
-    Supplier supplier3 = new Supplier("Jenny", "9Jx7Rt8", "Guang Zhou", "639-472-8015");
+    Supplier supplier3 = ne "9Jx7Rt8", "Guang Zhou", "639-472-8015");
     Supplier supplier4 = new Supplier("Lily", "4Sj3Zr2", "Shen Zhen", "851-307-6429");
     Supplier supplier5 = new Supplier("Tom", "6Ld5Bt9", "Cheng Du", "472-930-1856");
     Supplier supplier6 = new Supplier("Jerry", "7Xp2Kf5", "Tsing Dao", "307-619-4825");

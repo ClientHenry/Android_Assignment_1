@@ -4,24 +4,25 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <TextView
+        android:id="@+id/admin_list_id"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:text="1836473"
-        android:background="@color/material_dynamic_neutral_variant80"
         android:layout_marginRight="1dp"
         android:gravity="center"
+        android:textColor="#FFFFFF"
         />
     <TextView
+        android:id="@+id/admin_list_name"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         android:layout_weight="5"
         android:text="Mount Everest"
-        android:background="@color/material_dynamic_neutral_variant80"
         android:layout_marginRight="1dp"
         android:gravity="center"
+        android:textColor="@color/design_default_color_primary_dark"
         />
     <LinearLayout
         android:layout_width="0dp"
@@ -31,30 +32,30 @@
         <Button
             android:layout_marginStart="20dp"
             style="?attr/materialIconButtonStyle"
+            android:background="@android:color/transparent"
+            app:iconTint="?attr/colorOnSurface"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@android:color/transparent"
             android:insetLeft="0dp"
             android:insetTop="0dp"
             android:insetRight="0dp"
             android:insetBottom="0dp"
             android:padding="0dp"
             app:icon="@drawable/button_pen"
-            app:iconTint="?attr/colorOnSurface" />
+             />
 
         <Button
             android:layout_marginStart="20dp"
             style="?attr/materialIconButtonStyle"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@android:color/transparent"
             android:insetLeft="0dp"
             android:insetTop="0dp"
             android:insetRight="0dp"
             android:insetBottom="0dp"
             android:padding="0dp"
             app:icon="@drawable/button_delete"
-            app:iconTint="?attr/colorOnSurface" />
+            />
 
     </LinearLayout>
 
