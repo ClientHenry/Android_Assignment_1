@@ -40,20 +40,23 @@ public class Login_Page extends AppCompatActivity {
             if ((MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin() != null)
                     || (MyDataBase.getInstance(getApplicationContext()).supplierDao().getLogin() != null)
                     || (MyDataBase.getInstance(getApplicationContext()).adminDao().getLogin() != null)) {
-                Toast.makeText(Login_Page.this, "Please logout first", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login_Page.this, "Please logout first", Toast.LENGTH_LONG).show();
             } else {
 
                 if (customer != null) {
                     intent = new Intent(Login_Page.this, Customer_Page.class);
                     intent.putExtra("customer", customer.getName());
+                    Toast.makeText(Login_Page.this, "Login in successfully", Toast.LENGTH_LONG).show();
                     startActivity(intent);
 
                 } else if (supplier != null) {
                     intent = new Intent(Login_Page.this, Supplier_Page.class);
                     intent.putExtra("supplier", supplier.getName());
+                    Toast.makeText(Login_Page.this, "Login in successfully", Toast.LENGTH_LONG).show();
                     startActivity(intent);
                 } else if (admin != null) {
                     intent = new Intent(Login_Page.this, Admin_Page.class);
+                    Toast.makeText(Login_Page.this, "Login in successfully", Toast.LENGTH_LONG).show();
                     startActivity(intent);
                 } else {
                     txtLayoutUserName.setError("Invalid Username or Password");

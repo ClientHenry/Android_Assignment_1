@@ -13,7 +13,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +34,8 @@ public class Home_Page extends AppCompatActivity {
         optionRecycler();
         load_recycler();
         bottomNavigation();
- //       loadInfo();
+
+  //      loadInfo();
 
     }
 
@@ -79,9 +82,12 @@ public class Home_Page extends AppCompatActivity {
     private void bottomNavigation() {
 
         NavigationBarView nav = findViewById(R.id.bottom_navigation);
+
         NavigationBarView.OnItemSelectedListener listener = new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
                 if (item.getItemId() == R.id.item_2) {
                     Intent intent;
                     Customer customer = MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin();
@@ -101,8 +107,7 @@ public class Home_Page extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else
-                    return false;
-            }
+                    return false;}
         };
         nav.setOnItemSelectedListener(listener);
     }

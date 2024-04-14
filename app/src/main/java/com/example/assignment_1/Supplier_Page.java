@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +39,9 @@ public class Supplier_Page extends AppCompatActivity {
         Button btn_password = (Button) findViewById(R.id.supplier_btn_password);
         Button btn_address = (Button) findViewById(R.id.supplier_btn_address);
         Button btn_phone_number = (Button) findViewById(R.id.supplier_btn_phone_number);
+        Button btn_password_confirmed = (Button) findViewById(R.id.supplier_btn_password_confirmed);
+        Button btn_address_confirmed = (Button) findViewById(R.id.supplier_btn_address_confirmed);
+        Button btn_phone_number_confirmed = (Button) findViewById(R.id.supplier_btn_phone_number_confirmed);
 
         txtLayoutName.setText("Hi " + supplier.getName());
         textLayoutSupplierID.getEditText().setText(supplier.getIdNumber());
@@ -59,6 +63,24 @@ public class Supplier_Page extends AppCompatActivity {
         });
 
         btn_password.setOnClickListener(v -> {
+            txtLayoutPassword.setEnabled(true);
+            btn_password_confirmed.setEnabled(true);
+            btn_password_confirmed.setVisibility(Button.VISIBLE);
+            btn_password.setVisibility(Button.GONE);
+            btn_password.setEnabled(false);
+            btn_address.setEnabled(false);
+            btn_phone_number.setEnabled(false);
+
+        });
+
+        btn_password_confirmed.setOnClickListener(v -> {
+
+            txtLayoutPassword.setEnabled(false);
+            btn_password_confirmed.setEnabled(false);
+            btn_password_confirmed.setVisibility(Button.GONE);
+            btn_password.setVisibility(Button.VISIBLE);
+            btn_password.setEnabled(true);
+
             String password = txtLayoutPassword.getEditText().getText().toString().trim();
             if (password.isEmpty()) {
                 txtLayoutPassword.setError("Field can't be empty");
@@ -68,21 +90,68 @@ public class Supplier_Page extends AppCompatActivity {
                 txtLayoutPassword.setError(null);
                 supplier.setPassword(password);
                 MyDataBase.getInstance(getApplicationContext()).supplierDao().update(supplier);
+                txtLayoutPassword.setEnabled(false);
+                btn_password_confirmed.setEnabled(false);
+                btn_password_confirmed.setVisibility(Button.GONE);
+                btn_password.setVisibility(Button.VISIBLE);
+                btn_password.setEnabled(true);
+                btn_address.setEnabled(true);
+                btn_phone_number.setEnabled(true);
+                Toast.makeText(getApplicationContext(), "Password updated", Toast.LENGTH_LONG).show();
             }
+
         });
 
         btn_address.setOnClickListener(v -> {
+            textLayoutAddress.setEnabled(true);
+            btn_address_confirmed.setEnabled(true);
+            btn_address_confirmed.setVisibility(Button.VISIBLE);
+            btn_address.setVisibility(Button.GONE);
+            btn_address.setEnabled(false);
+            btn_password.setEnabled(false);
+            btn_phone_number.setEnabled(false);
+        });
+
+        btn_address_confirmed.setOnClickListener(v -> {
+            textLayoutAddress.setEnabled(false);
+            btn_address_confirmed.setEnabled(false);
+            btn_address_confirmed.setVisibility(Button.GONE);
+            btn_address.setVisibility(Button.VISIBLE);
+            btn_address.setEnabled(true);
+            btn_password.setEnabled(true);
+            btn_phone_number.setEnabled(true);
+
             String address = textLayoutAddress.getEditText().getText().toString().trim();
             textLayoutAddress.setError(null);
             supplier.setAddress(address);
             MyDataBase.getInstance(getApplicationContext()).supplierDao().update(supplier);
+            Toast.makeText(getApplicationContext(), "Address updated", Toast.LENGTH_LONG).show();
         });
 
         btn_phone_number.setOnClickListener(v -> {
+            textLayoutPhone.setEnabled(true);
+            btn_phone_number_confirmed.setEnabled(true);
+            btn_phone_number_confirmed.setVisibility(Button.VISIBLE);
+            btn_phone_number.setVisibility(Button.GONE);
+            btn_phone_number.setEnabled(false);
+            btn_address.setEnabled(false);
+            btn_password.setEnabled(false);
+        });
+
+        btn_phone_number_confirmed.setOnClickListener(v -> {
+            textLayoutPhone.setEnabled(false);
+            btn_phone_number_confirmed.setEnabled(false);
+            btn_phone_number_confirmed.setVisibility(Button.GONE);
+            btn_phone_number.setVisibility(Button.VISIBLE);
+            btn_phone_number.setEnabled(true);
+            btn_address.setEnabled(true);
+            btn_password.setEnabled(true);
+
             String phoneNum = textLayoutPhone.getEditText().getText().toString().trim();
             textLayoutPhone.setError(null);
             supplier.setPhoneNum(phoneNum);
             MyDataBase.getInstance(getApplicationContext()).supplierDao().update(supplier);
+            Toast.makeText(getApplicationContext(), "Phone number updated", Toast.LENGTH_LONG).show();
         });
 
 
@@ -99,6 +168,7 @@ public class Supplier_Page extends AppCompatActivity {
     private void bottomNavigation() {
 
         NavigationBarView nav = findViewById(R.id.bottom_navigation);
+        nav.setSelectedItemId(R.id.item_2);
         NavigationBarView.OnItemSelectedListener listener = new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

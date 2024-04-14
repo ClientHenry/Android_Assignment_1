@@ -73,6 +73,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="40dp"
+            app:backgroundTint="@drawable/button_state"
             android:text="View Details" />
 
 

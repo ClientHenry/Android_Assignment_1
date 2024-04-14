@@ -48,8 +48,8 @@ public class Deal_List_Adapter extends RecyclerView.Adapter{
         Deal_List_ViewHolder viewHolder = (Deal_List_ViewHolder) holder;
         viewHolder.deal_name.setText(x.get(position).getName());
         viewHolder.deal_category.setText(x.get(position).getCategory());
-        viewHolder.deal_price.setText(Integer.toString(x.get(position).getPrice()));;
-        viewHolder.deal_discount.setText(Integer.toString(x.get(position).getDiscount()));
+        viewHolder.deal_price.setText("$ " + Integer.toString(x.get(position).getPrice()));;
+        viewHolder.deal_discount.setText(Integer.toString(x.get(position).getDiscount()) + "% Off");
         viewHolder.deal_date.setText(x.get(position).getDate());
         viewHolder.deal_mark.setText(x.get(position).getMark());
 

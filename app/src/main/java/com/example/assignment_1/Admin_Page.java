@@ -87,6 +87,7 @@ public class Admin_Page extends AppCompatActivity {
     private void bottomNavigation() {
 
         NavigationBarView nav = findViewById(R.id.bottom_navigation);
+        nav.setSelectedItemId(R.id.item_2);
         NavigationBarView.OnItemSelectedListener listener = new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

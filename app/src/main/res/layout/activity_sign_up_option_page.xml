@@ -50,6 +50,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/sign_up_option_btn_customer"
+                    android:backgroundTint="@drawable/button_state"
                     style="?attr/borderlessButtonStyle"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
@@ -84,6 +85,7 @@
                     style="?attr/borderlessButtonStyle"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
+                    android:backgroundTint="@drawable/button_state"
                     android:text="S U P P L I E R"
                     android:textSize="20dp" />
 

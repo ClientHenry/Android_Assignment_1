@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.List;
 
@@ -56,9 +58,17 @@ public class Customer_Adapter extends RecyclerView.Adapter{
         viewHolder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyDataBase.getInstance(mContext).dealDao().delete(x.get(position));
-                x.remove(position);
-                notifyDataSetChanged();
+
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(mContext);
+                builder.setTitle("Delete Deal").setMessage("Are you sure you want to delete this deal?").
+                        setPositiveButton("Yes", (dialog, which) -> {
+                            MyDataBase.getInstance(mContext).dealDao().delete(x.get(position));
+                            x.remove(position);
+                            notifyDataSetChanged();
+                            Toast.makeText(mContext, "Deleted successfully", Toast.LENGTH_SHORT).show();
+                        }).setNegativeButton("No", (dialog, which) -> {
+                            dialog.dismiss();
+                        }).show();
             }
         });
 

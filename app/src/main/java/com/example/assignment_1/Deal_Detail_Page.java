@@ -11,9 +11,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -40,8 +43,8 @@ public class Deal_Detail_Page extends AppCompatActivity {
         Button btn_deal_detail = findViewById(R.id.deal_detail_btn);
 
         deal_name.setText(product.getName());
-        deal_price.setText(Integer.toString(product.getPrice()));
-        deal_discount.setText(Integer.toString(product.getDiscount()));
+        deal_price.setText("$ " + Integer.toString(product.getPrice()));
+        deal_discount.setText(Integer.toString(product.getDiscount()) + "% Off");
         deal_description.setText(product.getDescription());
         deal_mark.setText(product.getMark());
         deal_date.setText(product.getDate());
@@ -65,12 +68,18 @@ public class Deal_Detail_Page extends AppCompatActivity {
 
             Customer customer = MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin();
             if(customer != null) {
-                Deal deal = new Deal(id, customer.getCid());
-                MyDataBase.getInstance(getApplicationContext()).dealDao().insert(deal);
 
-                Intent intent = new Intent(Deal_Detail_Page.this, Customer_Page.class);
-                intent.putExtra("customer", customer.getName());
-                startActivity(intent);
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(Deal_Detail_Page.this);
+                builder.setTitle("Confirm Order").setMessage("Are you sure you want to order this deal?")
+                       .setPositiveButton("Confirm", (dialog, which) -> {
+                            Deal deal = new Deal(id, customer.getCid());
+                            MyDataBase.getInstance(getApplicationContext()).dealDao().insert(deal);
+                            Toast.makeText(getApplicationContext(), "Ordered successfully", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(Deal_Detail_Page.this, Customer_Page.class);
+                            intent.putExtra("customer", customer.getName());
+                            startActivity(intent);
+                }).setNegativeButton("Cancel", (dialog, which) -> {
+                }).show();
             }
             else {
                 Intent intent = new Intent(Deal_Detail_Page.this, Login_Page.class);

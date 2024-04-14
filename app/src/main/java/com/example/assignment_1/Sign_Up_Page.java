@@ -40,6 +40,11 @@ public class Sign_Up_Page extends AppCompatActivity {
             finish();
         });
 
+        regToLoginBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(Sign_Up_Page.this, Login_Page.class);
+            startActivity(intent);
+        });
+
         regBtn.setOnClickListener(v -> {
 
             if (validateName() && validatePassword()) {
@@ -47,14 +52,14 @@ public class Sign_Up_Page extends AppCompatActivity {
                     Customer customer = new Customer(regName.getEditText().getText().toString().trim(),
                             regPassword.getEditText().getText().toString().trim(), "", "");
                     MyDataBase.getInstance(getApplicationContext()).customerDao().insert(customer);
-                    Toast.makeText(Sign_Up_Page.this, "Customer created successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Sign_Up_Page.this, "Customer created successfully", Toast.LENGTH_LONG).show();
 
 
                 } else {
                     Supplier supplier = new Supplier(regName.getEditText().getText().toString().trim(),
                             regPassword.getEditText().getText().toString().trim(), "", "");
                     MyDataBase.getInstance(getApplicationContext()).supplierDao().insert(supplier);
-                    Toast.makeText(Sign_Up_Page.this, "Supplier created successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Sign_Up_Page.this, "Supplier created successfully", Toast.LENGTH_LONG).show();
                 }
 
                 Intent intent = new Intent(Sign_Up_Page.this, Login_Page.class);
