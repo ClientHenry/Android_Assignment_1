@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
@@ -36,26 +37,38 @@ public class Login_Page extends AppCompatActivity {
             Admin admin = MyDataBase.getInstance(getApplicationContext()).adminDao().getAdminByUsernameAndPassword(userName, password);
             Intent intent;
 
-            if (customer != null) {
-                intent = new Intent(Login_Page.this, Customer_Page.class);
-                intent.putExtra("customer", customer.getName());
-                startActivity(intent);
-
-            } else if (supplier != null) {
-                intent = new Intent(Login_Page.this, Supplier_Page.class);
-                intent.putExtra("supplier", supplier.getName());
-                startActivity(intent);
-            } else if (admin != null) {
-                intent = new Intent(Login_Page.this, Admin_Page.class);
-                startActivity(intent);
+            if ((MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin() != null)
+                    || (MyDataBase.getInstance(getApplicationContext()).supplierDao().getLogin() != null)
+                    || (MyDataBase.getInstance(getApplicationContext()).adminDao().getLogin() != null)) {
+                Toast.makeText(Login_Page.this, "Please logout first", Toast.LENGTH_SHORT).show();
             } else {
-                txtLayoutUserName.setError("Invalid Username or Password");
-                txtLayoutPassword.setError("Invalid Username or Password");
+
+                if (customer != null) {
+                    intent = new Intent(Login_Page.this, Customer_Page.class);
+                    intent.putExtra("customer", customer.getName());
+                    startActivity(intent);
+
+                } else if (supplier != null) {
+                    intent = new Intent(Login_Page.this, Supplier_Page.class);
+                    intent.putExtra("supplier", supplier.getName());
+                    startActivity(intent);
+                } else if (admin != null) {
+                    intent = new Intent(Login_Page.this, Admin_Page.class);
+                    startActivity(intent);
+                } else {
+                    txtLayoutUserName.setError("Invalid Username or Password");
+                    txtLayoutPassword.setError("Invalid Username or Password");
+                }
             }
         });
 
         btnReturn.setOnClickListener(v -> {
             finish();
+        });
+
+        btnSignUp.setOnClickListener(v -> {
+            Intent intent = new Intent(Login_Page.this, SignUpOption.class);
+            startActivity(intent);
         });
 
         bottomNavigation();

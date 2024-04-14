@@ -42,11 +42,6 @@ public class Admin_Page extends AppCompatActivity {
         FloatingActionButton btn_return = findViewById(R.id.admin_btn_return);
         Button btn_sign_out = (Button) findViewById(R.id.admin_btn_sign_out);
 
-        btn_customer.setText("Customer\n" + customers.size());
-        btn_supplier.setText("Supplier\n" + suppliers.size());
-        btn_product.setText("Product\n" + products.size());
-        btn_deal.setText("Deal\n" + deals.size());
-
         btn_return.setOnClickListener(v -> {
             finish();
         });

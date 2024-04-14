@@ -1,9 +1,11 @@
 package com.example.assignment_1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,6 +53,24 @@ public class Customer_Adapter extends RecyclerView.Adapter{
         requestOptions = requestOptions.transform(new RoundedCorners(30));
         Glide.with(mContext).load(product.getImage_1()).apply(requestOptions).into(viewHolder.dealImage);
 
+        viewHolder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyDataBase.getInstance(mContext).dealDao().delete(x.get(position));
+                x.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+
+        viewHolder.viewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, Deal_Detail_Page.class);
+                intent.putExtra("product_id", x.get(position).getProductId());
+                mContext.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -63,12 +83,16 @@ public class Customer_Adapter extends RecyclerView.Adapter{
         public TextView dealName;
         public TextView dealNum;
         public ImageView dealImage;
+        public Button deleteButton;
+        public Button viewButton;
 
         public Customer_Detail_ViewHolder(@NonNull View itemView) {
             super(itemView);
             dealName = itemView.findViewById(R.id.customer_lbl_deal_name);
             dealNum = itemView.findViewById(R.id.customer_lbl_deal_number);
             dealImage = itemView.findViewById(R.id.customer_img_deal_image);
+            deleteButton = itemView.findViewById(R.id.customer_btn_delete);
+            viewButton = itemView.findViewById(R.id.customer_btn_details);
 
         }
     }

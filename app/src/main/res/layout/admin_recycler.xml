@@ -45,6 +45,7 @@
              />
 
         <Button
+            android:id="@+id/admin_btn_delete"
             android:layout_marginStart="20dp"
             style="?attr/materialIconButtonStyle"
             android:layout_width="20dp"

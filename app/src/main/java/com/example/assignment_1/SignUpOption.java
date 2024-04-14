@@ -28,6 +28,21 @@ public class SignUpOption extends AppCompatActivity {
            finish();
         });
 
+        Button btn_customer = findViewById(R.id.sign_up_option_btn_customer);
+        Button btn_supplier = findViewById(R.id.sign_up_option_btn_supplier);
+        btn_customer.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUpOption.this, Sign_Up_Page.class);
+            intent.putExtra("type", "customer");
+            startActivity(intent);
+        });
+
+        btn_supplier.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUpOption.this, Sign_Up_Page.class);
+            intent.putExtra("type", "supplier");
+            startActivity(intent);
+        });
+
+
         bottomNavigation();
     }
 

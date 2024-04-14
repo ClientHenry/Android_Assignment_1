@@ -39,6 +39,9 @@ public class Customer_Page extends AppCompatActivity {
         TextInputLayout textLayoutCustomerID = findViewById(R.id.customer_txt_id);
         FloatingActionButton btn_return = findViewById(R.id.customer_btn_return);
         Button btn_sign_out = (Button) findViewById(R.id.customer_btn_sign_out);
+        Button btn_password = (Button) findViewById(R.id.customer_btn_password);
+        Button btn_address = (Button) findViewById(R.id.customer_btn_address);
+        Button btn_phone_number = (Button) findViewById(R.id.customer_btn_phone_number);
 
         txtLayoutName.setText("Hi " + customer.getName());
         textLayoutCustomerID.getEditText().setText(customer.getIdNumber());
@@ -61,6 +64,38 @@ public class Customer_Page extends AppCompatActivity {
             customer.setStatus(0);
             MyDataBase.getInstance(getApplicationContext()).customerDao().update(customer);
             startActivity(intent);
+        });
+
+        btn_password.setOnClickListener(v -> {
+
+            String password = txtLayoutPassword.getEditText().getText().toString().trim();
+            if (password.isEmpty()) {
+                txtLayoutPassword.setError("Field can't be empty");
+            } else if (password.length() < 6) {
+                txtLayoutPassword.setError("Password must be at least 6 characters long");
+            } else {
+                txtLayoutPassword.setError(null);
+                customer.setPassword(password);
+                MyDataBase.getInstance(getApplicationContext()).customerDao().update(customer);
+            }
+
+        });
+
+        btn_address.setOnClickListener(v -> {
+
+            String address = textLayoutAddress.getEditText().getText().toString().trim();
+
+            textLayoutAddress.setError(null);
+            customer.setAddress(address);
+            MyDataBase.getInstance(getApplicationContext()).customerDao().update(customer);
+        });
+
+        btn_phone_number.setOnClickListener(v -> {
+
+            String phone = textLayoutPhone.getEditText().getText().toString().trim();
+            textLayoutPhone.setError(null);
+            customer.setPhoneNum(phone);
+            MyDataBase.getInstance(getApplicationContext()).customerDao().update(customer);
         });
 
         bottomNavigation();

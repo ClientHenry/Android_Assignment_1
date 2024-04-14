@@ -27,21 +27,42 @@ public class Sign_Up_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_page);
 
+        String type = getIntent().getStringExtra("type");
+
         regName = findViewById(R.id.sigh_up_customer_txt_username);
         regPassword = findViewById(R.id.sigh_up_customer_txt_password);
         regConfirmedPassword = findViewById(R.id.sigh_up_customer_txt_confirm_password);
-        regBtn = (Button)findViewById(R.id.sigh_up_customer_btn_create_account);
+        regBtn = (Button) findViewById(R.id.sigh_up_customer_btn_create_account);
         regToLoginBtn = (Button) findViewById(R.id.sigh_up_customer_btn_login);
         FloatingActionButton btn_return = findViewById(R.id.sigh_up_customer_btn_return);
 
         btn_return.setOnClickListener(v -> {
-           finish();
+            finish();
         });
 
         regBtn.setOnClickListener(v -> {
-           if(validateName()&&validatePassword()){
-               Toast.makeText(getApplicationContext(), regName.getEditText().getText().toString().trim(), Toast.LENGTH_SHORT).show();
-           }
+
+            if (validateName() && validatePassword()) {
+                if (type.equals("customer")) {
+                    Customer customer = new Customer(regName.getEditText().getText().toString().trim(),
+                            regPassword.getEditText().getText().toString().trim(), "", "");
+                    MyDataBase.getInstance(getApplicationContext()).customerDao().insert(customer);
+                    Toast.makeText(Sign_Up_Page.this, "Customer created successfully", Toast.LENGTH_SHORT).show();
+
+
+                } else {
+                    Supplier supplier = new Supplier(regName.getEditText().getText().toString().trim(),
+                            regPassword.getEditText().getText().toString().trim(), "", "");
+                    MyDataBase.getInstance(getApplicationContext()).supplierDao().insert(supplier);
+                    Toast.makeText(Sign_Up_Page.this, "Supplier created successfully", Toast.LENGTH_SHORT).show();
+                }
+
+                Intent intent = new Intent(Sign_Up_Page.this, Login_Page.class);
+                startActivity(intent);
+
+            } else {
+                Toast.makeText(Sign_Up_Page.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            }
         });
 
         bottomNavigation();
@@ -51,39 +72,39 @@ public class Sign_Up_Page extends AppCompatActivity {
     private boolean validatePassword() {
         regPassword = findViewById(R.id.sigh_up_customer_txt_password);
         regConfirmedPassword = findViewById(R.id.sigh_up_customer_txt_confirm_password);
-    String password = regPassword.getEditText().getText().toString().trim();
-    String confirmedPassword = regConfirmedPassword.getEditText().getText().toString().trim();
-    if(password.isEmpty() || confirmedPassword.isEmpty()){
-        regPassword.setError("Field can't be empty");
-        return false;
-    }else if(password.length() < 6 || confirmedPassword.length() < 6){
-        regPassword.setError("Password must be at least 6 characters long");
-        return false;
-    }else if(!password.equals(confirmedPassword)){
-        regPassword.setError("Passwords do not match");
-        return false;
-    }else{
-        regPassword.setError(null);
-        return true;
-    }
+        String password = regPassword.getEditText().getText().toString().trim();
+        String confirmedPassword = regConfirmedPassword.getEditText().getText().toString().trim();
+        if (password.isEmpty() || confirmedPassword.isEmpty()) {
+            regPassword.setError("Field can't be empty");
+            return false;
+        } else if (password.length() < 6 || confirmedPassword.length() < 6) {
+            regPassword.setError("Password must be at least 6 characters long");
+            return false;
+        } else if (!password.equals(confirmedPassword)) {
+            regPassword.setError("Passwords do not match");
+            return false;
+        } else {
+            regPassword.setError(null);
+            return true;
+        }
     }
 
 
     private boolean validateName() {
         regName = findViewById(R.id.sigh_up_customer_txt_username);
         String username = regName.getEditText().getText().toString().trim();
-        if(MyDataBase.getInstance(getApplicationContext()).customerDao().getCustomerByName(username) != null){
+        if ((MyDataBase.getInstance(getApplicationContext()).customerDao().getCustomerByName(username) != null)
+                || (MyDataBase.getInstance(getApplicationContext()).supplierDao().getSupplierByName(username) != null)
+                || (MyDataBase.getInstance(getApplicationContext()).adminDao().getAdminByUsername(username) != null)) {
             regName.setError("Username already exists");
             return false;
-        }
-        else if(username.isEmpty()){
+        } else if (username.isEmpty()) {
             regName.setError("Field can't be empty");
             return false;
-        }else if(username.length() < 4){
+        } else if (username.length() < 4) {
             regName.setError("Username must be at least 4 characters long");
             return false;
-        }
-        else{
+        } else {
             regName.setError(null);
             return true;
         }

@@ -29,11 +29,10 @@ public class Home_Page extends AppCompatActivity {
 
         getIntent().getStringExtra("category");
 
-        //     searchViewAction();
         optionRecycler();
         load_recycler();
         bottomNavigation();
-        //      loadInfo();
+ //       loadInfo();
 
     }
 
@@ -76,42 +75,6 @@ public class Home_Page extends AppCompatActivity {
         List<Product> x = MyDataBase.getInstance(getApplicationContext()).productDao().getAllProducts();
         rc.setAdapter(new Deal_List_Adapter(x));
     }
-
-/*
-    private void searchViewAction(){
-
-        SearchView searchView = findViewById(R.id.searchView);
-        TextView textView = findViewById(R.id.textView);
-
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView.setVisibility(View.GONE);
-            }
-        });
-
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                textView.setVisibility(View.VISIBLE);
-                return false;
-            }
-        });
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-
-    }*/
 
     private void bottomNavigation() {
 

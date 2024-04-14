@@ -72,16 +72,16 @@
                         android:id="@+id/admin_btn_customer"
                         style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:text="10\nCustomer" />
+                        android:layout_height="55dp"
+                        android:text="Customer"/>
 
                     <Button
                         android:id="@+id/admin_btn_supplier"
                         style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="150dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="55dp"
                         android:layout_marginLeft="40dp"
-                        android:text="10\nSupplier" />
+                        android:text="Supplier" />
 
                 </LinearLayout>
 
@@ -95,16 +95,16 @@
                         android:id="@+id/admin_btn_order"
                         style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:text="10\nOrder" />
+                        android:layout_height="55dp"
+                        android:text="Order" />
 
                     <Button
                         android:id="@+id/admin_btn_deal"
                         style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="150dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="55dp"
                         android:layout_marginLeft="40dp"
-                        android:text="20\nDeal" />
+                        android:text="Deal" />
 
                 </LinearLayout>
 

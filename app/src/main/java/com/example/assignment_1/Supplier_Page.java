@@ -35,6 +35,9 @@ public class Supplier_Page extends AppCompatActivity {
         TextInputLayout textLayoutAddress = findViewById(R.id.supplier_txt_address);
         TextInputLayout textLayoutPhone = findViewById(R.id.supplier_txt_phone_number);
         TextInputLayout textLayoutSupplierID = findViewById(R.id.supplier_txt_id);
+        Button btn_password = (Button) findViewById(R.id.supplier_btn_password);
+        Button btn_address = (Button) findViewById(R.id.supplier_btn_address);
+        Button btn_phone_number = (Button) findViewById(R.id.supplier_btn_phone_number);
 
         txtLayoutName.setText("Hi " + supplier.getName());
         textLayoutSupplierID.getEditText().setText(supplier.getIdNumber());
@@ -53,6 +56,33 @@ public class Supplier_Page extends AppCompatActivity {
             supplier.setStatus(0);
             MyDataBase.getInstance(getApplicationContext()).supplierDao().update(supplier);
             startActivity(intent);
+        });
+
+        btn_password.setOnClickListener(v -> {
+            String password = txtLayoutPassword.getEditText().getText().toString().trim();
+            if (password.isEmpty()) {
+                txtLayoutPassword.setError("Field can't be empty");
+            } else if (password.length() < 6) {
+                txtLayoutPassword.setError("Password must be at least 6 characters long");
+            } else {
+                txtLayoutPassword.setError(null);
+                supplier.setPassword(password);
+                MyDataBase.getInstance(getApplicationContext()).supplierDao().update(supplier);
+            }
+        });
+
+        btn_address.setOnClickListener(v -> {
+            String address = textLayoutAddress.getEditText().getText().toString().trim();
+            textLayoutAddress.setError(null);
+            supplier.setAddress(address);
+            MyDataBase.getInstance(getApplicationContext()).supplierDao().update(supplier);
+        });
+
+        btn_phone_number.setOnClickListener(v -> {
+            String phoneNum = textLayoutPhone.getEditText().getText().toString().trim();
+            textLayoutPhone.setError(null);
+            supplier.setPhoneNum(phoneNum);
+            MyDataBase.getInstance(getApplicationContext()).supplierDao().update(supplier);
         });
 
 
@@ -77,7 +107,7 @@ public class Supplier_Page extends AppCompatActivity {
                     Intent intent = new Intent(Supplier_Page.this, Home_Page.class);
                     startActivity(intent);
                     return true;
-                }else
+                } else
                     return false;
             }
         };

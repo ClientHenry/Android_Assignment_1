@@ -45,7 +45,7 @@ public class Deal_Detail_Page extends AppCompatActivity {
         deal_description.setText(product.getDescription());
         deal_mark.setText(product.getMark());
         deal_date.setText(product.getDate());
-        btn_more.setText("More from " + category);
+        btn_more.setText("More from " + category + " >>");
 
         View_Pager_Adapter adapter = new View_Pager_Adapter(getSupportFragmentManager(), id, getApplicationContext());
         mViewPager = findViewById(R.id.deal_detail_view_pager);
@@ -65,6 +65,9 @@ public class Deal_Detail_Page extends AppCompatActivity {
 
             Customer customer = MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin();
             if(customer != null) {
+                Deal deal = new Deal(id, customer.getCid());
+                MyDataBase.getInstance(getApplicationContext()).dealDao().insert(deal);
+
                 Intent intent = new Intent(Deal_Detail_Page.this, Customer_Page.class);
                 intent.putExtra("customer", customer.getName());
                 startActivity(intent);
@@ -75,7 +78,6 @@ public class Deal_Detail_Page extends AppCompatActivity {
             }
 
         });
-
 
         bottomNavigation();
 

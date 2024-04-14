@@ -41,6 +41,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/customer_btn_delete"
                 style="?attr/materialIconButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,8 +52,7 @@
                 android:insetRight="0dp"
                 android:insetBottom="0dp"
                 android:padding="0dp"
-                app:icon="@drawable/button_delete"
-                app:iconTint="?attr/colorOnSurface" />
+                app:icon="@drawable/button_delete"/>
 
         </LinearLayout>
 
@@ -63,8 +63,18 @@
             android:layout_gravity="center"
             android:scaleType="centerCrop"
             android:src="@drawable/harbin_1"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/customer_btn_details"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="40dp"
+            android:text="View Details" />
+
 
     </LinearLayout>
 
