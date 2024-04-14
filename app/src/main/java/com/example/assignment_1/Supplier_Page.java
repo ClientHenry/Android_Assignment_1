@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -173,7 +174,8 @@ public class Supplier_Page extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.item_1) {
-
+                    ProgressBar progressBar = findViewById(R.id.supplier_progress_bar);
+                    progressBar.setVisibility(ProgressBar.VISIBLE);
                     Intent intent = new Intent(Supplier_Page.this, Home_Page.class);
                     startActivity(intent);
                     return true;
@@ -182,6 +184,14 @@ public class Supplier_Page extends AppCompatActivity {
             }
         };
         nav.setOnItemSelectedListener(listener);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        ProgressBar progressBar = findViewById(R.id.supplier_progress_bar);
+        progressBar.setVisibility(ProgressBar.GONE);
+
     }
 
 

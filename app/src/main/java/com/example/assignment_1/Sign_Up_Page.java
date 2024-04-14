@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -49,6 +50,9 @@ public class Sign_Up_Page extends AppCompatActivity {
 
             if (validateName() && validatePassword()) {
                 if (type.equals("customer")) {
+                    ProgressBar progressBar = findViewById(R.id.sign_up_progress_bar);
+                    progressBar.setVisibility(ProgressBar.VISIBLE);
+
                     Customer customer = new Customer(regName.getEditText().getText().toString().trim(),
                             regPassword.getEditText().getText().toString().trim(), "", "");
                     MyDataBase.getInstance(getApplicationContext()).customerDao().insert(customer);
@@ -56,6 +60,8 @@ public class Sign_Up_Page extends AppCompatActivity {
 
 
                 } else {
+                    ProgressBar progressBar = findViewById(R.id.sign_up_progress_bar);
+                    progressBar.setVisibility(ProgressBar.VISIBLE);
                     Supplier supplier = new Supplier(regName.getEditText().getText().toString().trim(),
                             regPassword.getEditText().getText().toString().trim(), "", "");
                     MyDataBase.getInstance(getApplicationContext()).supplierDao().insert(supplier);
@@ -65,8 +71,6 @@ public class Sign_Up_Page extends AppCompatActivity {
                 Intent intent = new Intent(Sign_Up_Page.this, Login_Page.class);
                 startActivity(intent);
 
-            } else {
-                Toast.makeText(Sign_Up_Page.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -124,23 +128,32 @@ public class Sign_Up_Page extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.item_1) {
 
+                    ProgressBar progressBar = findViewById(R.id.sign_up_progress_bar);
+                    progressBar.setVisibility(ProgressBar.VISIBLE);
+
                     Intent intent = new Intent(Sign_Up_Page.this, Home_Page.class);
                     startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.item_2) {
+                    ProgressBar progressBar = findViewById(R.id.sign_up_progress_bar);
+                    progressBar.setVisibility(ProgressBar.VISIBLE);
                     Intent intent;
                     Customer customer = MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin();
                     Supplier supplier = MyDataBase.getInstance(getApplicationContext()).supplierDao().getLogin();
                     Admin admin = MyDataBase.getInstance(getApplicationContext()).adminDao().getLogin();
                     if (customer != null) {
+
                         intent = new Intent(Sign_Up_Page.this, Customer_Page.class);
                         intent.putExtra("customer", customer.getName());
                     } else if (supplier != null) {
+
                         intent = new Intent(Sign_Up_Page.this, Supplier_Page.class);
                         intent.putExtra("supplier", supplier.getName());
                     } else if (admin != null) {
+
                         intent = new Intent(Sign_Up_Page.this, Admin_Page.class);
                     } else {
+
                         intent = new Intent(Sign_Up_Page.this, Login_Page.class);
                     }
                     startActivity(intent);
@@ -150,5 +163,12 @@ public class Sign_Up_Page extends AppCompatActivity {
             }
         };
         nav.setOnItemSelectedListener(listener);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ProgressBar progressBar = findViewById(R.id.sign_up_progress_bar);
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
     }
 }

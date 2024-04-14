@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +64,10 @@ public class Deal_List_Adapter extends RecyclerView.Adapter{
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, Deal_Detail_Page.class);
                 intent.putExtra("product_id", x.get(viewHolder.getAdapterPosition()).getPid());
+
+                ProgressBar progressBar = ((Home_Page)mContext).findViewById(R.id.home_progress_bar);
+                progressBar.setVisibility(View.VISIBLE);
+
                 mContext.startActivity(intent);
             }
         });

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,7 +37,7 @@ public class Login_Page extends AppCompatActivity {
             Supplier supplier = MyDataBase.getInstance(getApplicationContext()).supplierDao().getSupplierByNameAndPassword(userName, password);
             Admin admin = MyDataBase.getInstance(getApplicationContext()).adminDao().getAdminByUsernameAndPassword(userName, password);
             Intent intent;
-
+            ProgressBar progressBar = findViewById(R.id.login_progress_bar);
             if ((MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin() != null)
                     || (MyDataBase.getInstance(getApplicationContext()).supplierDao().getLogin() != null)
                     || (MyDataBase.getInstance(getApplicationContext()).adminDao().getLogin() != null)) {
@@ -44,17 +45,20 @@ public class Login_Page extends AppCompatActivity {
             } else {
 
                 if (customer != null) {
+                    progressBar.setVisibility(ProgressBar.VISIBLE);
                     intent = new Intent(Login_Page.this, Customer_Page.class);
                     intent.putExtra("customer", customer.getName());
                     Toast.makeText(Login_Page.this, "Login in successfully", Toast.LENGTH_LONG).show();
                     startActivity(intent);
 
                 } else if (supplier != null) {
+                    progressBar.setVisibility(ProgressBar.VISIBLE);
                     intent = new Intent(Login_Page.this, Supplier_Page.class);
                     intent.putExtra("supplier", supplier.getName());
                     Toast.makeText(Login_Page.this, "Login in successfully", Toast.LENGTH_LONG).show();
                     startActivity(intent);
                 } else if (admin != null) {
+                    progressBar.setVisibility(ProgressBar.VISIBLE);
                     intent = new Intent(Login_Page.this, Admin_Page.class);
                     Toast.makeText(Login_Page.this, "Login in successfully", Toast.LENGTH_LONG).show();
                     startActivity(intent);
@@ -83,27 +87,35 @@ public class Login_Page extends AppCompatActivity {
         NavigationBarView.OnItemSelectedListener listener = new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                ProgressBar progressBar = findViewById(R.id.login_progress_bar);
+
                 if (item.getItemId() == R.id.item_1) {
+
+                    progressBar.setVisibility(ProgressBar.VISIBLE);
 
                     Intent intent = new Intent(Login_Page.this, Home_Page.class);
                     startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.item_2) {
+
                     Intent intent;
                     Customer customer = MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin();
                     Supplier supplier = MyDataBase.getInstance(getApplicationContext()).supplierDao().getLogin();
                     Admin admin = MyDataBase.getInstance(getApplicationContext()).adminDao().getLogin();
                     if (customer != null) {
+                        progressBar.setVisibility(ProgressBar.VISIBLE);
                         intent = new Intent(Login_Page.this, Customer_Page.class);
                         intent.putExtra("customer", customer.getName());
                         startActivity(intent);
                         return true;
                     } else if (supplier != null) {
+                        progressBar.setVisibility(ProgressBar.VISIBLE);
                         intent = new Intent(Login_Page.this, Supplier_Page.class);
                         intent.putExtra("supplier", supplier.getName());
                         startActivity(intent);
                         return true;
                     } else if (admin != null) {
+                        progressBar.setVisibility(ProgressBar.VISIBLE);
                         intent = new Intent(Login_Page.this, Admin_Page.class);
                         startActivity(intent);
                         return true;
@@ -116,5 +128,13 @@ public class Login_Page extends AppCompatActivity {
             }
         };
         nav.setOnItemSelectedListener(listener);
+    }
+
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+        ProgressBar progressBar = findViewById(R.id.login_progress_bar);
+        progressBar.setVisibility(ProgressBar.GONE);
     }
 }

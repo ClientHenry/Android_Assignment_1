@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:text="Let's Get Started"
             android:textColor="#FFFFFF" />
 
@@ -44,7 +44,7 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:hint="User Name"
             android:textColorHint="#D9D9D9"
             app:boxBackgroundColor="#FFFFFF"
@@ -66,7 +66,7 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:hint="Password"
             android:textColorHint="#D9D9D9"
             app:boxBackgroundColor="#FFFFFF"
@@ -82,13 +82,14 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/sigh_up_customer_txt_confirm_password"
             style="?attr/textInputFilledStyle"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:hint="Password"
             android:textColorHint="#D9D9D9"
             app:boxBackgroundColor="#FFFFFF"
@@ -110,7 +111,7 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@drawable/button_state"
             android:text="Create an Account"
             android:textSize="20dp"
@@ -122,7 +123,7 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:text="-------------------------    Or    -------------------------"
             android:textColor="#FFFFFF"
             android:textSize="20dp" />
@@ -137,6 +138,7 @@
             android:text="Login in"
             android:textSize="20dp"
             app:icon="@drawable/button_arrow"
+            android:backgroundTint="@drawable/button_state"
             app:iconGravity="textEnd"
             app:iconSize="50dp" />
     </LinearLayout>
@@ -147,5 +149,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:menu="@menu/navigation_bar" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:id="@+id/sign_up_progress_bar"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

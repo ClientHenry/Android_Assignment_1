@@ -3,6 +3,7 @@ package com.example.assignment_1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,11 +25,11 @@ import java.util.Random;
 
 public class Home_Page extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
 
         getIntent().getStringExtra("category");
 
@@ -37,6 +39,13 @@ public class Home_Page extends AppCompatActivity {
 
   //      loadInfo();
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ProgressBar  progressBar = findViewById(R.id.home_progress_bar);
+        progressBar.setVisibility(View.GONE);
     }
 
     private void load_recycler() {
@@ -89,6 +98,8 @@ public class Home_Page extends AppCompatActivity {
 
 
                 if (item.getItemId() == R.id.item_2) {
+                    ProgressBar progressBar = findViewById(R.id.home_progress_bar);
+                    progressBar.setVisibility(ProgressBar.VISIBLE);
                     Intent intent;
                     Customer customer = MyDataBase.getInstance(getApplicationContext()).customerDao().getLogin();
                     Supplier supplier = MyDataBase.getInstance(getApplicationContext()).supplierDao().getLogin();
