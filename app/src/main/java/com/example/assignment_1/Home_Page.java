@@ -37,7 +37,7 @@ public class Home_Page extends AppCompatActivity {
         load_recycler();
         bottomNavigation();
 
-  //      loadInfo();
+  //     loadInfo();
 
     }
 
@@ -98,6 +98,7 @@ public class Home_Page extends AppCompatActivity {
 
 
                 if (item.getItemId() == R.id.item_2) {
+
                     ProgressBar progressBar = findViewById(R.id.home_progress_bar);
                     progressBar.setVisibility(ProgressBar.VISIBLE);
                     Intent intent;
@@ -132,7 +133,7 @@ public class Home_Page extends AppCompatActivity {
         Customer customer1 = new Customer("Lucy", "Yg9b6D2", "New York", "628-493-1750");
         Customer customer2 = new Customer("David", "4x7L8Wt", "Los Angeles", "841-269-3705");
         Customer customer3 = new Customer("Sharren", "2mP9Bh5", "Chicago", "367-518-4902");
-        Customer customer4 = new Customer("Min", "3Qr7Kd6", "Houston", "974-352-6081");
+        Customer customer4 = new Customer("P9Bh5", "3Qr7Kd6", "Houston", "974-352-6081");
         Customer customer5 = new Customer("Joel", "Jw5S9Xf", "San Francisco", "215-786-4039");
         Customer customer6 = new Customer("Ross", "8M2z4Cj", "Seattle", "459-127-8306");
         Customer customer7 = new Customer("Monica", "6n7aY3G", "Miami", "732-695-4180");

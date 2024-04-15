@@ -43,6 +43,11 @@ public class Supplier_Page extends AppCompatActivity {
         Button btn_password_confirmed = (Button) findViewById(R.id.supplier_btn_password_confirmed);
         Button btn_address_confirmed = (Button) findViewById(R.id.supplier_btn_address_confirmed);
         Button btn_phone_number_confirmed = (Button) findViewById(R.id.supplier_btn_phone_number_confirmed);
+        Button btn_add_product = (Button) findViewById(R.id.supplier_btn_add_product);
+        btn_add_product.setOnClickListener(v -> {
+            Intent intent = new Intent(Supplier_Page.this, Supplier_Add_Page.class);
+            startActivity(intent);
+        });
 
         txtLayoutName.setText("Hi " + supplier.getName());
         textLayoutSupplierID.getEditText().setText(supplier.getIdNumber());

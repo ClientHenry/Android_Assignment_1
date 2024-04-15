@@ -57,20 +57,10 @@ public class Admin_Adapter extends RecyclerView.Adapter {
         } else if (customer != null) {
             viewHolder.list_name.setText(customer.get(position).getName());
             viewHolder.list_id.setText(customer.get(position).getIdNumber());
-            viewHolder.delete.setOnClickListener(v -> {
-                MyDataBase.getInstance(mContext).customerDao().delete(customer.get(position));
-                customer.remove(position);
-                notifyDataSetChanged();
-            });
 
         } else if (supplier != null) {
             viewHolder.list_name.setText(supplier.get(position).getName());
             viewHolder.list_id.setText(supplier.get(position).getIdNumber());
-            viewHolder.delete.setOnClickListener(v -> {
-                MyDataBase.getInstance(mContext).supplierDao().delete(supplier.get(position));
-                supplier.remove(position);
-                notifyDataSetChanged();
-            });
         }
     }
 
@@ -98,13 +88,11 @@ public class Admin_Adapter extends RecyclerView.Adapter {
         TextView list_id;
         TextView list_name;
 
-        Button delete;
 
         public Admin_ViewHolder(@NonNull View itemView) {
             super(itemView);
             list_id = itemView.findViewById(R.id.admin_list_id);
             list_name = itemView.findViewById(R.id.admin_list_name);
-            delete = itemView.findViewById(R.id.admin_btn_delete);
         }
     }
 }
